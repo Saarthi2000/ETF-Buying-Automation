@@ -16,18 +16,40 @@ Requirements:
 pip install dhanhq pandas numpy schedule
 """
 
-import pandas as pd
-import numpy as np
+#import pandas as pd
+#import numpy as np
 from datetime import datetime, time
 from dateutil import parser
-import schedule
-import time as time_module
-import json
-import os
-from dhanhq import dhanhq
+from pprint import pprint
 from dotenv import find_dotenv
 from dotenv import load_dotenv
-from pprint import pprint
+
+
+
+import os
+
+dotenv_file: str = find_dotenv()
+load_dotenv(dotenv_file)
+
+from Dhan_Tradehull import Tradehull
+
+tsl = Tradehull(
+    os.getenv("CLIENT_ID"),
+    os.getenv("ACCESS_TOKEN"),
+    mode="access_token"
+)
+
+
+
+
+
+
+#import schedule
+#import time as time_module
+#import json
+#from dhanhq import dhanhq
+
+
 
 dotenv_file = find_dotenv()
 load_dotenv(dotenv_file)
@@ -35,11 +57,6 @@ load_dotenv(dotenv_file)
 # ================================
 # CONFIGURATION - UPDATE THESE
 # ================================
-
-# Dhan API Credentials (Only needed for fetching price data - NOT for placing orders)
-CLIENT_ID = "YOUR_CLIENT_ID"
-ACCESS_TOKEN = "YOUR_ACCESS_TOKEN"
-API_KEY = "YOUR_API_KEY"
 
 # Strategy Parameters
 SMA_PERIOD = 11
