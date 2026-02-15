@@ -115,7 +115,7 @@ def initialize_log_files():
             'Portfolio_Value', 'Unrealized_PnL', 'Total_Capital'
         ])
         daily_df.to_csv(DAILY_SUMMARY_FILE, index=False)
-        print(f"✓ Created {DAILY_SUMMARY_FILE}")
+        print(f" Created {DAILY_SUMMARY_FILE}")
     
     # Portfolio holdings
     if not os.path.exists(PORTFOLIO_FILE):
@@ -125,7 +125,7 @@ def initialize_log_files():
             'Current_Value', 'Unrealized_PnL', 'PnL_Percent'
         ])
         portfolio_df.to_csv(PORTFOLIO_FILE, index=False)
-        print(f"✓ Created {PORTFOLIO_FILE}")
+        print(f"Created {PORTFOLIO_FILE}")
 
 # ================================
 # UTILITY FUNCTIONS
@@ -136,10 +136,10 @@ def initialize_dhan_client():
     global dhan
     try:
         dhan = dhanhq(CLIENT_ID, ACCESS_TOKEN)
-        print("✓ Dhan API client initialized (READ-ONLY mode for testing)")
+        print("Dhan API client initialized (READ-ONLY mode for testing)")
         return True
     except Exception as e:
-        print(f"✗ Error initializing Dhan client: {e}")
+        print(f"Error initializing Dhan client: {e}")
         return False
 
 def is_trading_time():
@@ -586,8 +586,8 @@ def schedule_tasks():
 def main():
     """Main function"""
     print("="*70)
-    print("  🧪 FORWARD TESTING / PAPER TRADING MODE")
-    print("  Dhan ETF Investment Strategy Simulator")
+    print("FORWARD TESTING / PAPER TRADING MODE")
+    print("Dhan ETF Investment Strategy Simulator")
     print("="*70)
     print("\n  NO REAL ORDERS WILL BE PLACED")
     print("✓ All trades are simulated")
@@ -610,8 +610,8 @@ def main():
     update_previous_close_prices()
     schedule_tasks()
     
-    print("\n✓ Forward testing is now running...")
-    print("✓ Press Ctrl+C to stop and see final report\n")
+    print("\n Forward testing is now running...")
+    print("Press Ctrl+C to stop and see final report\n")
     
     # Main loop
     try:
@@ -622,12 +622,12 @@ def main():
         print("\n\n  Forward testing stopped by user\n")
         show_portfolio_summary()
         generate_performance_report()
-        print(f"\n✓ All results saved to:")
+        print(f"\n All results saved to:")
         print(f"  - {TRADES_LOG_FILE}")
         print(f"  - {DAILY_SUMMARY_FILE}")
         print(f"  - {PORTFOLIO_FILE}")
     except Exception as e:
-        print(f"\n\n✗ Error: {e}")
+        print(f"\n\n Error: {e}")
 
 if __name__ == "__main__":
     main()
